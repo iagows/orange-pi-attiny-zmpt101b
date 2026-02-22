@@ -2,15 +2,16 @@
 
 #include "voltage_checker.hpp"
 
-VoltageChecker voltageChecker(A0);
+VoltageChecker zmpt(A6, 5.0, 85.91, 0.0);
 
 void setup() {
-    Serial.begin(9600);
-    voltageChecker.begin();
+  Serial.begin(9600);
+  zmpt.begin();
 }
 
 void loop() {
-  uint16_t rawValue = voltageChecker.readRaw();
-  Serial.println(rawValue);
-  delay(100);
+  float voltage = zmpt.readRMS();
+  Serial.print("Voltage: ");
+  Serial.println(voltage);
+  delay(200); 
 }

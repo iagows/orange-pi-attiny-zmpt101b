@@ -5,20 +5,20 @@
 
 class VoltageChecker {
 public:
-//     VoltageChecker(uint8_t analogPin, float referenceVoltage = 5.0, float calibrationA = -90.24, float calibrationB = 420.76, float calibrationScale = -210.2, float calibrationOffset = 210.2);
-//     float readRMS();
-// private:
-//     uint8_t _pin;
-//     float _refVoltage;
-//     // Calibration: Veff = ((VeffD - B) / A) * scale + offset
-//     float _A, _B, _scale, _offset;
-//     static const int SAMPLES = 100;
-// hardware testing
-    VoltageChecker(uint8_t pin);
+    VoltageChecker(uint8_t analogPin,
+                   float refVoltage = 5.0,
+                   float scale = 1.0,
+                   float offset = 0.0);
     void begin();
-    uint16_t readRaw();
+    float readRMS();
+
 private:
     uint8_t _pin;
+    float _refVoltage;
+    float _scale;
+    float _offset;
+    static const int SAMPLES = 100;
+    uint16_t readRaw();
 };
 
-#endif // VOLTAGE_CHECKER_HPP
+#endif

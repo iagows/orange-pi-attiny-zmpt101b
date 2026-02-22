@@ -8,5 +8,4 @@ build:
 	@platformio run
 
 flash: build
-	# flash the compiled firmware to the device using platformio
-	platformio run --target upload
+	@platformio run --target upload
